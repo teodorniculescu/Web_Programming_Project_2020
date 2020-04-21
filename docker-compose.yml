@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  api:
+    build: .
+    ports:
+      - "3000:${API_PORT}"
+  mariadb:
+    image: mariadb:10.1.44
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MARIADB_DATABASE}
+      MYSQL_USER: ${MARIADB_USER}
+      MYSQL_PASSWORD: ${MARIADB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    ports:
+      - "3306:${MARIADB_PORT}"
+    expose:
+      - "3306"
+    volumes:
+      - pw_project_data:/var/lib/mariadb
+
+volumes:
+  pw_project_data:

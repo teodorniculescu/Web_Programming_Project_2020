@@ -1,0 +1,23 @@
+{
+  "name": "web_programming_project_2020",
+  "version": "1.0.0",
+  "description": "\"The project for the course Web Programming in the academic year 2019-2020\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teodorniculescu/Web_Programming_Project_2020.git"
+  },
+  "author": "Niculescu Teodor-Vicentiu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/teodorniculescu/Web_Programming_Project_2020/issues"
+  },
+  "homepage": "https://github.com/teodorniculescu/Web_Programming_Project_2020#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
