@@ -18,6 +18,11 @@ services:
       - "3306"
     volumes:
       - pw_project_data:/var/lib/mariadb
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
 volumes:
   pw_project_data:
