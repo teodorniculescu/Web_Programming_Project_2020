@@ -1,0 +1,52 @@
+$max_size_element: 14mm;
+$size-element: 6mm;
+$spacing: calc((#{$max_size_element} - #{$size-element}) / 2);
+$size-logo: 11mm;
+$spacing-logo: calc((#{$max_size_element} - #{$size-logo}) / 2);
+
+@mixin no_click_highlight() {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navigation_bar {
+  @include no_click_highlight();
+  .navigation_container {
+    background-color: black;
+    height: $max_size_element;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    .openbutton,
+    .cart,
+    .logo {
+      position: relative;
+      cursor: pointer;
+      width: auto;
+    }
+    .openbutton,
+    .cart {
+      height: $size-element;
+      text-align: right;
+      top: $spacing;
+    }
+    .logo {
+      top: $spacing-logo;
+      height: $size-logo;
+    }
+    .openbutton {
+      left: $spacing;
+    }
+    .cart {
+      right: $spacing;
+    }
+  }
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.no_sticky {
+  position: static;
+}
