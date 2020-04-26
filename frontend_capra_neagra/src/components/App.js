@@ -7,7 +7,7 @@ import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div>
+    <div className={styles.overall}>
       <SideNav />
       <Header />
       <Main />
