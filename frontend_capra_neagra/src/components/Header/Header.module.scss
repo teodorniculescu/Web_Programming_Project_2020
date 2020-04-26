@@ -3,9 +3,89 @@ $size-element: 6mm;
 $spacing: calc((#{$max_size_element} - #{$size-element}) / 2);
 $size-logo: 11mm;
 $spacing-logo: calc((#{$max_size_element} - #{$size-logo}) / 2);
+$fade_time_img: 5s;
+$fade_time_text: 13s;
+$logo_and_text_width: calc(min(100vw, 100vh) * 0.5);
+$logo_and_text_height: height;
 
 @mixin no_click_highlight() {
   -webkit-tap-highlight-color: transparent;
+}
+
+@mixin fade_in_content($time) {
+  animation: fadeIn ease $time;
+  -webkit-animation: fadeIn ease $time;
+  -moz-animation: fadeIn ease $time;
+  -o-animation: fadeIn ease $time;
+  -ms-animation: fadeIn ease $time;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.background_image {
+  background: url(./_DSC2278.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 80vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  .fade_in_img {
+    @include fade_in_content($fade_time_img);
+    display: flex;
+    justify-content: center;
+    img {
+      height: $logo_and_text_height;
+      width: $logo_and_text_width;
+    }
+  }
 }
 
 .navigation_bar {
