@@ -1,0 +1,3 @@
+$max_size_element: 14mm;
+$size-element: 6mm;
+$spacing: calc((#{$max_size_element} - #{$size-element}) / 2);

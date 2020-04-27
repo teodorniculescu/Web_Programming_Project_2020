@@ -1,11 +1,19 @@
-$max_size_element: 14mm;
-$size-element: 6mm;
-$spacing: calc((#{$max_size_element} - #{$size-element}) / 2);
+@import "_variables.scss";
+@import "_fonts.scss";
+
 $width-button-spacing: calc(10 * #{$spacing});
 $background-color: white;
 $text-color: black;
 $separator-line-color: black;
 $separator-line-width: calc(100% - 2cm);
+
+.text {
+  @include montserrat(400);
+  letter-spacing: 0.1em;
+  color: $text-color;
+  text-align: center;
+  font-size: $size-element;
+}
 
 .closebutton {
   cursor: pointer;
@@ -40,10 +48,7 @@ $separator-line-width: calc(100% - 2cm);
     a {
       padding: $spacing $spacing $spacing $spacing;
       text-decoration: none;
-      color: $text-color;
       display: block;
-      text-align: center;
-      font-size: $size-element;
     }
   }
 }

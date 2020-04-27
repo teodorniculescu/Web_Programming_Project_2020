@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import cart from "./cart.svg";
 import hamburger from "./hamburger.svg";
+import scroll from "./scroll.svg";
 import styles from "./Header.module.scss";
 
 class Header extends React.Component {
@@ -31,11 +32,23 @@ class Header extends React.Component {
     );
   }
 
+  getSlogan() {
+    return "Cucerește versanții".toUpperCase();
+  }
+
   getBeginningPicture() {
     return (
       <div className={styles.background_image}>
-        <div className={styles.fade_in_img}>
-          <img src={logo} alt="Logo" />
+        <div className={styles.upper}>
+          <div className={styles.fade_in_img}>
+            <img src={logo} alt="Logo" />
+          </div>
+          <div className={styles.fade_in_text}>
+            <div className={styles.text}>{this.getSlogan()}</div>
+          </div>
+        </div>
+        <div className={styles.scroll}>
+          <img src={scroll} alt="Scroll" />
         </div>
       </div>
     );

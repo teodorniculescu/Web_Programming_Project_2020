@@ -1,0 +1,81 @@
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animate(
+  $name,
+  $duration,
+  $timing_function,
+  $direction,
+  $delay,
+  $iteration_count
+) {
+  -webkit-animation-name: $name;
+  -moz-animation-name: $name;
+  -o-animation-name: $name;
+  animation-name: $name;
+  -webkit-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  -o-animation-duration: $duration;
+  animation-duration: $duration;
+  -webkit-animation-timing-function: $timing_function;
+  -moz-animation-timing-function: $timing_function;
+  -o-animation-timing-function: $timing_function;
+  animation-timing-function: $timing_function;
+  -webkit-animation-direction: $direction;
+  -moz-animation-direction: $direction;
+  -o-animation-direction: $direction;
+  animation-direction: $direction;
+  -webkit-animation-delay: $delay;
+  -moz-animation-delay: $delay;
+  -o-animation-delay: $delay;
+  animation-delay: $delay;
+  -webkit-animation-iteration-count: $iteration_count;
+  -moz-animation-iteration-count: $iteration_count;
+  -o-animation-iteration-count: $iteration_count;
+  animation-iteration-count: $iteration_count;
+}
+
+@include keyframes(fade_in_keyframes) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin animate_fade_in($time, $timing_function) {
+  @include animate(fade_in_keyframes, $time, $timing_function, none, 0, 1);
+}
+
+@include keyframes(move_scroll_keyframes) {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(30px);
+  }
+}
+
+@mixin animate_move_scroll($delay) {
+  @include animate(
+    move_scroll_keyframes,
+    1s,
+    ease-in-out,
+    alternate,
+    $delay,
+    infinite
+  );
+}

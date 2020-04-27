@@ -19,7 +19,11 @@ class SideNav extends React.Component {
     );
   }
   getSideLink(link, content) {
-    return <a href={link}>{content}</a>;
+    return (
+      <a href={link}>
+        <div className={styles.text}>{content}</div>
+      </a>
+    );
   }
   render() {
     return (

@@ -1,68 +1,20 @@
-$max_size_element: 14mm;
-$size-element: 6mm;
-$spacing: calc((#{$max_size_element} - #{$size-element}) / 2);
+@import "_variables.scss";
+@import "_animate.scss";
+@import "_fonts.scss";
+
 $size-logo: 11mm;
 $spacing-logo: calc((#{$max_size_element} - #{$size-logo}) / 2);
-$fade_time_img: 5s;
-$fade_time_text: 13s;
-$logo_and_text_width: calc(min(100vw, 100vh) * 0.5);
-$logo_and_text_height: height;
+$fade_time: 2s;
+$logo_and_text_width: auto;
+$logo_and_text_height: calc(min(100vw, 100vh) * 0.3);
+$slogan_font_size: calc(#{$logo_and_text_height} * 0.12);
+$scroll_button_height: calc(#{$slogan_font_size} * 1.5);
+$background_image_heigh: calc(100vh - #{$max_size_element});
+$slogan_margin_top: calc(#{$spacing} * 1);
 
-@mixin no_click_highlight() {
-  -webkit-tap-highlight-color: transparent;
-}
-
-@mixin fade_in_content($time) {
-  animation: fadeIn ease $time;
-  -webkit-animation: fadeIn ease $time;
-  -moz-animation: fadeIn ease $time;
-  -o-animation: fadeIn ease $time;
-  -ms-animation: fadeIn ease $time;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-ms-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+header {
+  @include montserrat(600);
+  letter-spacing: 0.2em;
 }
 
 .background_image {
@@ -71,25 +23,46 @@ $logo_and_text_height: height;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 80vh;
+  height: $background_image_heigh;
   width: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: stretch;
-  .fade_in_img {
-    @include fade_in_content($fade_time_img);
+  .upper {
+    .fade_in_img {
+      @include animate_fade_in($fade_time, ease-out);
+      display: flex;
+      justify-content: center;
+      img {
+        height: $logo_and_text_height;
+        width: $logo_and_text_width;
+      }
+    }
+    .fade_in_text {
+      @include animate_fade_in($fade_time, ease-in-out);
+      display: flex;
+      justify-content: center;
+      .text {
+        color: white;
+        margin-top: $slogan_margin_top;
+        font-size: $slogan_font_size;
+      }
+    }
+  }
+  .scroll {
+    @include animate_fade_in($fade_time, ease-in);
     display: flex;
     justify-content: center;
     img {
-      height: $logo_and_text_height;
-      width: $logo_and_text_width;
+      @include animate_move_scroll($fade_time);
+      width: auto;
+      height: $scroll_button_height;
     }
   }
 }
 
 .navigation_bar {
-  @include no_click_highlight();
   .navigation_container {
     background-color: black;
     height: $max_size_element;
@@ -101,7 +74,7 @@ $logo_and_text_height: height;
     .logo {
       position: relative;
       cursor: pointer;
-      width: auto;
+      width: aut;
     }
     .openbutton,
     .cart {
