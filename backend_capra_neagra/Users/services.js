@@ -6,13 +6,11 @@ const { hash, compare } = require("../security/Password");
 const register = async (username, password) => {
   const hashedPassword = await hash(password);
   const role = username === "admin" ? "admin" : "user";
-  console.log("pls staphqwer");
-  /*
-  const cmd = `INSERT INTO Users (username, password, role) VALUES (${username}, ${password}, ${role});`;
+  const values = getValues({ username, hashedPassword, role });
+  const cmd = `INSERT INTO Users (username, password, role) VALUES (${values});`;
   query(cmd).then((res) => {
     console.log(res);
   });
-  */
 };
 
 const login = async (username, password) => {

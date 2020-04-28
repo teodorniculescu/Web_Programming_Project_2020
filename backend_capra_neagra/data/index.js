@@ -28,7 +28,11 @@ const query = async (query_text) => {
 };
 
 function getValues(json_object) {
-  console.log(json_object);
+  var result = "";
+  for (var attributename in json_object) {
+    result += `'` + json_object[attributename] + `', `;
+  }
+  return result.slice(0, -2);
 }
 
 module.exports = {
