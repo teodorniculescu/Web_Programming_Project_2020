@@ -1,0 +1,21 @@
+DROP TABLES IF EXISTS Specs, Products, Users;
+
+CREATE TABLE IF NOT EXISTS Users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
+    username VARCHAR(20) NOT NULL UNIQUE, 
+    password VARCHAR(100) NOT NULL, 
+    role ENUM('admin', 'user') NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS Products (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
+    price DECIMAL UNSIGNED ZEROFILL NOT NULL, 
+    quantity INT UNSIGNED NOT NULL, 
+    category ENUM('bicycles', 'accessories', 'clothing') NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS Specs (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
+    id_products INT UNSIGNED NOT NULL, 
+    CONSTRAINT fk_Specs_Products FOREIGN KEY (id_products) REFERENCES Products (id)
+    );

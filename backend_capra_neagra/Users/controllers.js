@@ -22,7 +22,7 @@ router.post("/register", async (req, res, next) => {
   const { username, password } = req.body;
   try {
     validateUsernameAndPassword(username, password);
-    await Service.add(username, password);
+    await Service.register(username, password);
     res.status(201).end();
   } catch (err) {
     next(err);
@@ -33,7 +33,7 @@ router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   try {
     validateUsernameAndPassword(username, password);
-    const token = await Service.authenticate(username, password);
+    const token = await Service.login(username, password);
     res.status(200).json(token);
   } catch (err) {
     next(err);

@@ -1,3 +1,4 @@
+const { ServerError } = require("../errors");
 const mariadb = require("mariadb");
 
 const pool = mariadb.createPool({
@@ -5,6 +6,7 @@ const pool = mariadb.createPool({
   user: process.env.MARIADB_USER,
   password: process.env.MARIADB_PASSWORD,
   port: process.env.MARIADB_PORT,
+  database: process.env.MARIADB_DATABASE,
   connectionLimit: 5,
 });
 
@@ -16,12 +18,12 @@ const query = async (query_text) => {
     conn = await pool.getConnection();
     rows = await conn.query(query_text);
   } catch (err) {
-    throw err;
+    throw new ServerError(`Received error from server: ${err}`, 404);
   } finally {
     if (conn) conn.end();
   }
   const duration = Date.now() - start;
-  console.log(`Query took ${duration} and returned ${rows.length} rows.`);
+  console.log(`Query took ${duration} milliseconds.`);
   return rows;
 };
 

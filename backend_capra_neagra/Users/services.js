@@ -1,23 +1,19 @@
-const { Users } = require("../data");
-
+const { query } = require("../data");
 const { generateToken } = require("../security/Jwt");
-
 const { ServerError } = require("../errors");
-
 const { hash, compare } = require("../security/Password");
 
-const add = async (username, password) => {
+const register = async (username, password) => {
   const hashedPassword = await hash(password);
   const role = username === "admin" ? "admin" : "user";
-  const user = new Users({
-    username,
-    password: hashedPassword,
-    role,
+  const cmd = `INSERT INTO Users (username, password, role) VALUES (${username}, ${password}, ${role});`;
+  query(cmd).then((res) => {
+    console.log(res);
   });
-  await user.save();
+  //await user.save();
 };
 
-const authenticate = async (username, password) => {
+const login = async (username, password) => {
   const user = await Users.findOne({ username });
   if (user === null) {
     throw new ServerError(
@@ -36,6 +32,6 @@ const authenticate = async (username, password) => {
 };
 
 module.exports = {
-  add,
-  authenticate,
+  register,
+  login,
 };
