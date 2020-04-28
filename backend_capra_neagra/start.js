@@ -8,7 +8,6 @@ const express = require("express");
 const morgan = require("morgan"); //middleware de logare
 const helmet = require("helmet"); //middleware de securitate
 const cors = require("cors");
-const mariadb = require("mariadb");
 
 const routes = require("./routes");
 
@@ -38,14 +37,6 @@ app.use((err, req, res, next) => {
   res.status(status).json({
     error: message,
   });
-});
-
-const pool = mariadb.createPool({
-  host: process.env.MARIADB_HOST,
-  user: process.env.MARIADB_USER,
-  password: process.env.MARIADB_PASSWORD,
-  port: process.env.MARIADB_PORT,
-  connectionLimit: 5,
 });
 
 app.listen(process.env.PORT, () => {
