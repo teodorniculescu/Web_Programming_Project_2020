@@ -27,6 +27,11 @@ const query = async (query_text) => {
   return rows;
 };
 
+function getValues(json_object) {
+  console.log(json_object);
+}
+
 module.exports = {
   query,
+  getValues,
 };

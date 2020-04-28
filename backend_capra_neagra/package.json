@@ -4,7 +4,7 @@
   "description": "\"The project for the course Web Programming in the academic year 2019-2020\"",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config start.js"
+    "start": "nodemon -r --delay 1500ms dotenv/config start.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,11 @@
     "moment-timezone": "^0.5.28",
     "morgan": "^1.9.1",
     "validator": "^13.0.0"
+  },
+  "nodemonConfig": {
+    "events": {
+      "restart": "fuser -k 3001/tcp"
+    },
+    "delay": "2500"
   }
 }

@@ -39,6 +39,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(`Backend listening on port ${process.env.PORT}.`);
 });

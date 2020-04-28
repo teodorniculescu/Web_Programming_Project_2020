@@ -1,4 +1,4 @@
-const { query } = require("../data");
+const { query, getValues } = require("../data");
 const { generateToken } = require("../security/Jwt");
 const { ServerError } = require("../errors");
 const { hash, compare } = require("../security/Password");
@@ -6,11 +6,13 @@ const { hash, compare } = require("../security/Password");
 const register = async (username, password) => {
   const hashedPassword = await hash(password);
   const role = username === "admin" ? "admin" : "user";
+  console.log("pls staphqwer");
+  /*
   const cmd = `INSERT INTO Users (username, password, role) VALUES (${username}, ${password}, ${role});`;
   query(cmd).then((res) => {
     console.log(res);
   });
-  //await user.save();
+  */
 };
 
 const login = async (username, password) => {
