@@ -79,7 +79,7 @@ CREATE TABLE `Users` (
   `role` enum('admin','user') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','$2a$05$d7HLz1R4Ev5dFWsYMyQBQebiSBVUA8d1RWbeNelSB3Vg9.ikAJ2m2','admin'),(3,'ionel','$2a$05$QGR5FShIYzg1Io9GHrtYCeJe.YmaT1ug1CkansTEg61Txz4gTYN7G','user');
+INSERT INTO `Users` VALUES (1,'admin','$2a$05$d7HLz1R4Ev5dFWsYMyQBQebiSBVUA8d1RWbeNelSB3Vg9.ikAJ2m2','admin'),(3,'ionel','$2a$05$QGR5FShIYzg1Io9GHrtYCeJe.YmaT1ug1CkansTEg61Txz4gTYN7G','user'),(4,'marcel','$2a$05$QHPfop/Ecumq7OjV1W9HEuBqTs3z8.z5nAY/P2KElYsImcyDk7wEi','user'),(6,'marcela','$2a$05$EDRp3o7.Bnx1M0QKv2FL6.vQimWlqn3oP0jZgVqcGtYhBjCeychU6','user'),(7,'lumenebuna','$2a$05$h.K4rcJCb8LQFa9kOD8.vONP4RPj4Ko9GOVAw1hIlFJ5aGIppnXUC','user'),(8,'lumewow','$2a$05$2PxWQk9yi6e9kJtaKCayMuLx0LM.BdFptaDCxDI/k9k4ZQxSV.QNy','user'),(9,'q','$2a$05$MiDFRRU1qsPvaJGD.aK/FOSn2rnln0wr3nSyMBq3NbpVhexePUq2S','user'),(10,'a','$2a$05$42hhqJRQJtwTOpKYHEhmOeg6UwmrQIBdT3I4Zh9wdOCQDW2fmcxY.','user');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -101,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-29  0:10:19
+-- Dump completed on 2020-04-29 10:26:00
