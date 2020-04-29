@@ -1,13 +1,21 @@
-const { query, getValues } = require("../data");
+const { query, getValues, getNames, FALSE, TRUE } = require("../data");
 const { generateToken } = require("../security/Jwt");
 const { ServerError } = require("../errors");
 const { hash, compare } = require("../security/Password");
 
-const register = async (username, password) => {
+const register_request = async (username, password, email) => {
   const hashedPassword = await hash(password);
   const role = username === "admin" ? "admin" : "user";
-  const values = getValues({ username, hashedPassword, role });
-  const cmd = `INSERT INTO Users (username, password, role) VALUES (${values});`;
+  const data = {
+    username: username,
+    password: hashedPassword,
+    role: role,
+    email: email,
+    valid: TRUE,
+  };
+  const values = getValues(data);
+  const names = getNames(data);
+  const cmd = `INSERT INTO Users (${names}) VALUES (${values});`;
   await query(cmd);
 };
 
@@ -31,6 +39,6 @@ const login = async (username, password) => {
 };
 
 module.exports = {
-  register,
+  register_request,
   login,
 };

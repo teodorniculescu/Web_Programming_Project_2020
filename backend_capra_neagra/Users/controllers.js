@@ -4,35 +4,47 @@ const { validateFields } = require("../utils");
 
 const router = express.Router();
 
-function validateUsernameAndPassword(username, password) {
-  const fieldsToBeValidated = {
-    username: {
-      value: username,
-      type: "alpha",
-    },
-    password: {
-      value: password,
-      type: "ascii",
-    },
-  };
-  validateFields(fieldsToBeValidated);
-}
-
-router.post("/register", async (req, res, next) => {
-  const { username, password } = req.body;
+router.post("/register/request", async (req, res, next) => {
+  const { username, password, email } = req.body;
   try {
-    validateUsernameAndPassword(username, password);
-    await Service.register(username, password);
+    const fieldsToBeValidated = {
+      username: {
+        value: username,
+        type: "alpha",
+      },
+      password: {
+        value: password,
+        type: "ascii",
+      },
+      email: {
+        value: email,
+        type: "email",
+      },
+    };
+    validateFields(fieldsToBeValidated);
+    await Service.register_request(username, password, email);
     res.status(201).end();
   } catch (err) {
     next(err);
   }
 });
 
+router.post("/register/confirm");
+
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   try {
-    validateUsernameAndPassword(username, password);
+    const fieldsToBeValidated = {
+      username: {
+        value: username,
+        type: "alpha",
+      },
+      password: {
+        value: password,
+        type: "ascii",
+      },
+    };
+    validateFields(fieldsToBeValidated);
     const token = await Service.login(username, password);
     res.status(200).json(token);
   } catch (err) {

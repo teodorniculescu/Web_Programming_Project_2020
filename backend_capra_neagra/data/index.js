@@ -35,7 +35,20 @@ function getValues(json_object) {
   return result.slice(0, -2);
 }
 
+function getNames(json_object) {
+  var result = "";
+  for (var attributename in json_object) {
+    result += attributename + `, `;
+  }
+  return result.slice(0, -2);
+}
+const FALSE = 0;
+const TRUE = 1;
+
 module.exports = {
   query,
   getValues,
+  getNames,
+  FALSE,
+  TRUE,
 };

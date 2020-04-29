@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS Users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
     username VARCHAR(20) NOT NULL UNIQUE, 
     password VARCHAR(100) NOT NULL, 
+    email VARCHAR(20) NOT NULL,
+    valid BOOL NOT NULL,
     role ENUM('admin', 'user') NOT NULL
     );
 
