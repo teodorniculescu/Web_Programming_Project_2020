@@ -2,6 +2,7 @@ const { query, getValues, getNames, FALSE, TRUE } = require("../data");
 const { generateToken } = require("../security/Jwt");
 const { ServerError } = require("../errors");
 const { hash, compare } = require("../security/Password");
+const { send } = require("../email");
 
 const register_request = async (username, password, email) => {
   const hashedPassword = await hash(password);
@@ -13,6 +14,7 @@ const register_request = async (username, password, email) => {
     email: email,
     valid: FALSE,
   };
+  send(email);
   const values = getValues(data);
   const names = getNames(data);
   const cmd = `INSERT INTO Users (${names}) VALUES (${values});`;
