@@ -11,7 +11,7 @@ const register_request = async (username, password, email) => {
     password: hashedPassword,
     role: role,
     email: email,
-    valid: TRUE,
+    valid: FALSE,
   };
   const values = getValues(data);
   const names = getNames(data);
