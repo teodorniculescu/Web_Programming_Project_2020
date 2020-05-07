@@ -4,21 +4,37 @@ const { ServerError } = require("../errors");
 const { hash, compare } = require("../security/Password");
 const { send } = require("../email");
 
+function generate_random_number(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  // The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 const register_request = async (username, password, email) => {
   const hashedPassword = await hash(password);
+  console.log(hashedPassword);
   const role = username === "admin" ? "admin" : "user";
+  const random_number = generate_random_number(0, 256);
   const data = {
     username: username,
     password: hashedPassword,
     role: role,
     email: email,
     valid: FALSE,
+    random: random_number,
   };
-  send(email);
   const values = getValues(data);
   const names = getNames(data);
   const cmd = `INSERT INTO Users (${names}) VALUES (${values});`;
-  await query(cmd);
+  let result = await query(cmd);
+  const id = result.insertId;
+  send(email, id, random_number);
+};
+
+const register_confirm = async (id, rnd) => {
+  console.log(id);
+  console.log(rnd);
 };
 
 const login = async (username, password) => {
@@ -42,5 +58,6 @@ const login = async (username, password) => {
 
 module.exports = {
   register_request,
+  register_confirm,
   login,
 };

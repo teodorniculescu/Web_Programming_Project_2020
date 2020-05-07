@@ -1,27 +1,27 @@
 const nodemailer = require("nodemailer");
-const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
-  port: 587,
-  auth: {
-    user: "adrain.schumm@ethereal.email",
-    pass: "9xy7pAcknqcHvc1pqb",
-  },
-});
 
-async function send(to) {
+async function send(to, id, rnd) {
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "ptmssigcra@gmail.com",
+      pass: "itisoveranakin", // naturally, replace both with your real credentials or an application-specific password
+    },
+  });
+
+  const link_auth = `http://localhost:3001/api/v1/users/register/confirm?id=${id}&rnd=${rnd}`;
+
+  const html_message = `Bine ati venit la Capra Neagra!<br>Va rugam sa apasati <a href=\"${link_auth}\">aici</a> pentru activatea contului de membru!`;
+
   let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    from: "capraneagra@temapw.ro", // sender address
     to: to, // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    subject: "Capra Neagra - Password Authentication", // Subject line
+    html: html_message, // html body
   });
 
   console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  return true;
 }
 
 module.exports = {

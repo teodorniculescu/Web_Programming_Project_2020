@@ -2,11 +2,12 @@ DROP TABLES IF EXISTS Specs, Products, Users;
 
 CREATE TABLE IF NOT EXISTS Users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
-    username VARCHAR(20) NOT NULL UNIQUE, 
+    username VARCHAR(100) NOT NULL UNIQUE, 
     password VARCHAR(100) NOT NULL, 
-    email VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     valid BOOL NOT NULL,
-    role ENUM('admin', 'user') NOT NULL
+    role ENUM('admin', 'user') NOT NULL,
+    random TINYINT UNSIGNED NOT NULL
     );
 
 CREATE TABLE IF NOT EXISTS Products (
