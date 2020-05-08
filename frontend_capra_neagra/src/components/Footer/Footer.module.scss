@@ -1,0 +1,21 @@
+@import "_variables.scss";
+$separator-line-color: black;
+$separator-line-width: calc(100% - 2cm);
+
+.footer_container {
+  background-color: black;
+  height: $max_size_element;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  .right_footer_container {
+    padding-top: 10mm;
+    padding-bottom: 10mm;
+  }
+}
+hr {
+  border-top: 1px solid $separator-line-color;
+  width: $separator-line-width;
+  border-bottom: 0px;
+}

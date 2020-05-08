@@ -17,7 +17,7 @@ class Confirmare extends Component {
     axios
       .post(address)
       .then((res) => {
-        if (res.data === 1) message = "Autentificare realizata cu succes!";
+        if (res.data === 1) message = "Confirmare realizata cu succes!";
         else message = "Incercare nereusita!";
         this.setState({ message });
       })
