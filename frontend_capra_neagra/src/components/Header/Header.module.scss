@@ -63,6 +63,7 @@ header {
 }
 
 .navigation_bar {
+  z-index: 1;
   .navigation_container {
     background-color: black;
     height: $max_size_element;
