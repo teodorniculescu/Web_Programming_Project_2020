@@ -1,7 +1,7 @@
 import React from "react";
 class Acasa extends React.Component {
   render() {
-    return null;
+    return <h1>acasa</h1>;
   }
 }
 export default Acasa;

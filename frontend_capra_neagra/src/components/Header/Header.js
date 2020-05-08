@@ -4,6 +4,7 @@ import cart from "./cart.svg";
 import hamburger from "./hamburger.svg";
 import scroll from "./scroll.svg";
 import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
@@ -11,10 +12,18 @@ class Header extends React.Component {
     this.state = {};
   }
   getLogo() {
-    return <img href="/" className={styles.logo} src={logo} alt="Logo" />;
+    return (
+      <Link to="/">
+        <img className={styles.logo} src={logo} alt="Logo" />
+      </Link>
+    );
   }
   getCart() {
-    return <img href="/" className={styles.cart} src={cart} alt="Cart" />;
+    return (
+      <Link to="/cumparaturi">
+        <img className={styles.cart} src={cart} alt="Cart" />;
+      </Link>
+    );
   }
   openMenu() {
     console.log("open");

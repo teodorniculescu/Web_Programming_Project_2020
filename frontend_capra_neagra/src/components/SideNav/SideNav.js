@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./SideNav.module.scss";
 import exit from "./exit.svg";
+import { Link } from "react-router-dom";
 
 class SideNav extends React.Component {
   closeMenu() {
@@ -20,9 +21,9 @@ class SideNav extends React.Component {
   }
   getSideLink(link, content) {
     return (
-      <a href={link}>
+      <Link to={link}>
         <div className={styles.text}>{content}</div>
-      </a>
+      </Link>
     );
   }
   render() {
@@ -32,11 +33,15 @@ class SideNav extends React.Component {
           {this.getCloseButton()}
           <div className={styles.side_navigation_list}>
             <hr />
-            {this.getSideLink("#", "BICICLETE")}
-            {this.getSideLink("#", "ACCESORII")}
-            {this.getSideLink("#", "TEXTILE")}
+            {this.getSideLink("/biciclete", "BICICLETE")}
+            {this.getSideLink("/accesorii", "ACCESORII")}
+            {this.getSideLink("/textile", "TEXTILE")}
             <hr />
-            {this.getSideLink("#", "CONTUL MEU")}
+            {this.getSideLink("/faq", "FAQ")}
+            {this.getSideLink("/contact", "CONTACT")}
+            {this.getSideLink("/suport", "SUPORT TEHNIC")}
+            <hr />
+            {this.getSideLink("/cont/inregistrare", "CONTUL MEU")}
           </div>
         </div>
         <div id="darken_background" className={styles.darken_background}></div>

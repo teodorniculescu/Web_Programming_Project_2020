@@ -1,0 +1,22 @@
+@import "_variables.scss";
+
+$box_spacing_top: 2mm;
+$box_spacing_bottom: 6mm;
+$box_spacing_left: 3mm;
+$box_spacing_right: 4.5mm;
+$inner_box_spacing: 1mm;
+$color_box: 230;
+
+.box {
+  margin-top: $box_spacing_top;
+  margin-bottom: $box_spacing_bottom;
+  margin-right: $box_spacing_right;
+  margin-left: $box_spacing_left;
+  padding: $inner_box_spacing $inner_box_spacing $inner_box_spacing
+    $inner_box_spacing;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  background-color: rgb($color_box, $color_box, $color_box);
+  border-radius: 10px;
+}

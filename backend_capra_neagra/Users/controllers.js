@@ -33,8 +33,8 @@ router.post("/register/confirm", async (req, res, next) => {
   const id = req.query.id;
   const rnd = req.query.rnd;
   try {
-    await Service.register_confirm(id, rnd);
-    res.status(201).end();
+    const result = await Service.register_confirm(id, rnd);
+    res.status(201).send(`${result}`);
   } catch (err) {
     next(err);
   }

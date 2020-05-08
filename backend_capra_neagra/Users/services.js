@@ -32,9 +32,10 @@ const register_request = async (username, password, email) => {
   send(email, id, random_number);
 };
 
-const register_confirm = async (id, rnd) => {
-  console.log(id);
-  console.log(rnd);
+const register_confirm = async (id, random) => {
+  const cmd = `UPDATE Users SET valid=1 WHERE id=${id} AND random=${random};`;
+  const result = await query(cmd);
+  return result.affectedRows;
 };
 
 const login = async (username, password) => {
