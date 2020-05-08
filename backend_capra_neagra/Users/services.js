@@ -33,7 +33,7 @@ const register_request = async (username, password, email) => {
 };
 
 const register_confirm = async (id, random) => {
-  const cmd = `UPDATE Users SET valid=1 WHERE id=${id} AND random=${random};`;
+  const cmd = `UPDATE Users SET valid=${TRUE} WHERE id=${id} AND random=${random};`;
   const result = await query(cmd);
   return result.affectedRows;
 };
@@ -48,6 +48,7 @@ const login = async (username, password) => {
       404
     );
   }
+  console.log(query_res);
   if (await compare(password, query_res.password)) {
     return await generateToken({
       userId: query_res.id,
