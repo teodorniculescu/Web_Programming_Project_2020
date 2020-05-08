@@ -48,7 +48,9 @@ const login = async (username, password) => {
       404
     );
   }
-  console.log(query_res);
+  if (query_res.valid === FALSE) {
+    throw new ServerError("Contul nu este validat!", 404);
+  }
   if (await compare(password, query_res.password)) {
     return await generateToken({
       userId: query_res.id,
