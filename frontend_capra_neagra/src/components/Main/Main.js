@@ -1,12 +1,10 @@
 import React from "react";
 import Acasa from "./Acasa/Acasa";
-import Biciclete from "./Biciclete/Biciclete";
 import Cont from "./Cont/Cont";
-import Accesorii from "./Accesorii/Accesorii";
-import Textile from "./Textile/Textile";
+import Produse from "./Produse/Produse";
 import Cumparaturi from "./Cumparaturi/Cumparaturi";
 import styles from "./Main.module.scss";
-import { Switch, Route } from "react-router-dom";
+import { withRouter, Switch, Route } from "react-router-dom";
 
 class Main extends React.Component {
   render() {
@@ -15,9 +13,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path={"/"} component={Acasa} />
           <Route path={"/cont"} component={Cont} />
-          <Route exact path={"/biciclete"} component={Biciclete} />
-          <Route exact path={"/accesorii"} component={Accesorii} />
-          <Route exact path={"/textile"} component={Textile} />
+          <Route path={"/produse"} component={Produse} />
           <Route exact path={"/cumparaturi"} component={Cumparaturi} />
         </Switch>
       </div>
@@ -25,4 +21,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default withRouter(Main);

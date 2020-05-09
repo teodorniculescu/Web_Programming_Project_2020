@@ -1,22 +1,25 @@
-import React from "react";
+import React, { Component } from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Main from "./Main/Main";
 import SideNav from "./SideNav/SideNav";
 import styles from "./App.module.scss";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className={styles.overall}>
-      <HashRouter basename="/">
-        <SideNav />
-        <Header />
-        <Main />
-        <Footer />
-      </HashRouter>
-    </div>
-  );
+class App extends Component {
+  state = {};
+  render() {
+    return (
+      <div className={styles.overall}>
+        <BrowserRouter basename="/">
+          <SideNav />
+          <Header />
+          <Main />
+          <Footer />
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Box from "../../Box/Box";
+import { withRouter } from "react-router-dom";
 
 class Inregistrare extends Component {
   state = {};
@@ -15,4 +16,4 @@ class Inregistrare extends Component {
   }
 }
 
-export default Inregistrare;
+export default withRouter(Inregistrare);

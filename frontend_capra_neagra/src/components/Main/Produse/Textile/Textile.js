@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 class Textile extends Component {
   state = {};
   render() {
@@ -6,4 +7,4 @@ class Textile extends Component {
   }
 }
 
-export default Textile;
+export default withRouter(Textile);

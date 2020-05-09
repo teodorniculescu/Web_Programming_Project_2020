@@ -2,8 +2,8 @@
 
 $box_spacing_top: 2mm;
 $box_spacing_bottom: 6mm;
-$box_spacing_left: 3mm;
-$box_spacing_right: 4.5mm;
+$box_spacing_left: 8mm;
+$box_spacing_right: calc(1.5mm + #{$box_spacing_left});
 $inner_box_spacing: 1mm;
 $color_box: 230;
 

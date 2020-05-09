@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
 class Cumparaturi extends Component {
   state = {};
   render() {
@@ -6,4 +8,4 @@ class Cumparaturi extends Component {
   }
 }
 
-export default Cumparaturi;
+export default withRouter(Cumparaturi);

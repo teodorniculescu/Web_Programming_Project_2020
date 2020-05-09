@@ -1,0 +1,37 @@
+$bac_width: 80%;
+
+div {
+  border-radius: 5px;
+  form {
+    display: flex;
+    flex-direction: column;
+    label {
+      display: flex;
+      justify-content: center;
+      input[type="text"],
+      input[type="password"] {
+        width: $bac_width;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+    }
+    input[type="submit"] {
+      width: $bac_width;
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  }
+}

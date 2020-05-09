@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class Accesorii extends React.Component {
   render() {
@@ -6,4 +7,4 @@ class Accesorii extends React.Component {
   }
 }
 
-export default Accesorii;
+export default withRouter(Accesorii);

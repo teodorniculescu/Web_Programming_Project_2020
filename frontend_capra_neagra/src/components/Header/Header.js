@@ -4,7 +4,7 @@ import cart from "./cart.svg";
 import hamburger from "./hamburger.svg";
 import scroll from "./scroll.svg";
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
@@ -110,4 +110,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

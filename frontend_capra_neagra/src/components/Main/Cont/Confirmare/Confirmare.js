@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Box from "../../Box/Box";
 import styles from "./Confirmare.module.scss";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 class Confirmare extends Component {
   state = { message: "" };
@@ -35,4 +36,4 @@ class Confirmare extends Component {
   }
 }
 
-export default Confirmare;
+export default withRouter(Confirmare);

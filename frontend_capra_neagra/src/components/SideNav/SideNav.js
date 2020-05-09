@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SideNav.module.scss";
 import exit from "./exit.svg";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class SideNav extends React.Component {
   closeMenu() {
@@ -21,7 +21,7 @@ class SideNav extends React.Component {
   }
   getSideLink(link, content) {
     return (
-      <Link to={link}>
+      <Link to={link} onClick={this.closeMenu}>
         <div className={styles.text}>{content}</div>
       </Link>
     );
@@ -33,15 +33,16 @@ class SideNav extends React.Component {
           {this.getCloseButton()}
           <div className={styles.side_navigation_list}>
             <hr />
-            {this.getSideLink("/biciclete", "BICICLETE")}
-            {this.getSideLink("/accesorii", "ACCESORII")}
-            {this.getSideLink("/textile", "TEXTILE")}
+            {this.getSideLink("/produse", "TOATE PRODUSELE")}
+            {this.getSideLink("/produse/biciclete", "BICICLETE")}
+            {this.getSideLink("/produse/accesorii", "ACCESORII")}
+            {this.getSideLink("/produse/textile", "TEXTILE")}
             <hr />
             {this.getSideLink("/faq", "FAQ")}
             {this.getSideLink("/contact", "CONTACT")}
             {this.getSideLink("/suport", "SUPORT TEHNIC")}
             <hr />
-            {this.getSideLink("/cont/inregistrare", "CONTUL MEU")}
+            {this.getSideLink("/cont/intrare", "CONTUL MEU")}
           </div>
         </div>
         <div id="darken_background" className={styles.darken_background}></div>
@@ -50,4 +51,4 @@ class SideNav extends React.Component {
   }
 }
 
-export default SideNav;
+export default withRouter(SideNav);

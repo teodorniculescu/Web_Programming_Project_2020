@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Box.module.scss";
+import { withRouter } from "react-router-dom";
+
 class Box extends Component {
   state = {};
   render() {
@@ -7,4 +9,4 @@ class Box extends Component {
   }
 }
 
-export default Box;
+export default withRouter(Box);

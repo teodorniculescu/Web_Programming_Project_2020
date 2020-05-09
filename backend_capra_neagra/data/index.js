@@ -42,11 +42,20 @@ function getNames(json_object) {
   }
   return result.slice(0, -2);
 }
+
+function getInsertCommand(table, data) {
+  const values = getValues(data);
+  const names = getNames(data);
+  const cmd = `INSERT INTO ${table} (${names}) VALUES (${values});`;
+  return cmd;
+}
+
 const FALSE = 0;
 const TRUE = 1;
 
 module.exports = {
   query,
+  getInsertCommand,
   getValues,
   getNames,
   FALSE,
