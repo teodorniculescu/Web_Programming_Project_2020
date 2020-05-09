@@ -8,8 +8,7 @@ const getByCategory = async (category) => {};
 const getAll = async () => {
   const cmd = `SELECT * FROM Products;`;
   const query_res = await query(cmd);
-  console.log(query_res);
-  return query_res[0];
+  return query_res;
 };
 
 const addProduct = async () => {};
