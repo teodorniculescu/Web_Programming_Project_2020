@@ -7,5 +7,6 @@ function addController(folder_name, url) {
   Router.use(url_path, controller);
 }
 addController("Users", "users");
+addController("Products", "products");
 
 module.exports = Router;

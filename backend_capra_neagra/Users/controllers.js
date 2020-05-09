@@ -1,7 +1,6 @@
 const express = require("express");
 const Service = require("./services.js");
 const { validateFields } = require("../utils");
-
 const router = express.Router();
 
 router.post("/register/request", async (req, res, next) => {
