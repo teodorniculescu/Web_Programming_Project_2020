@@ -1,21 +1,45 @@
 @import "_variables.scss";
-$separator-line-color: black;
-$separator-line-width: calc(100% - 2cm);
+$column_width: 33vw;
 
-.footer_container {
-  background-color: black;
-  height: $max_size_element;
+.container {
   text-align: center;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.site_footer {
+  background-color: black;
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
   color: white;
-  .right_footer_container {
-    padding-top: 10mm;
-    padding-bottom: 10mm;
+  hr {
+    border-top-color: white;
+    width: 90vw;
+  }
+  h6 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px;
+  }
+  a {
   }
 }
-hr {
-  border-top: 1px solid $separator-line-color;
-  width: $separator-line-width;
-  border-bottom: 0px;
+.footer_links {
+  padding-left: 0;
+  list-style: none;
+  li {
+    display: block;
+    padding-top: 3mm;
+  }
+  a {
+    color: white;
+  }
+}
+
+.copyright_text {
+  margin: 0;
 }
