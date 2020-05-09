@@ -4,8 +4,8 @@ $box_spacing_top: 2mm;
 $box_spacing_bottom: 6mm;
 $box_spacing_left: 8mm;
 $box_spacing_right: calc(1.5mm + #{$box_spacing_left});
-$inner_box_spacing: 1mm;
-$color_box: 230;
+$inner_box_spacing: 2mm;
+$cp: 210;
 
 .box {
   margin-top: $box_spacing_top;
@@ -16,6 +16,8 @@ $color_box: 230;
     $inner_box_spacing;
   text-decoration: none;
   display: block;
-  background-color: rgb($color_box, $color_box, $color_box);
-  border-radius: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: thick solid rgb($cp, $cp, $cp);
+  border-width: 1px;
 }

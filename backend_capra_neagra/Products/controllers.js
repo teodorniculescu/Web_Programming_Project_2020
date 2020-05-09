@@ -6,18 +6,13 @@ const { ServerError } = require("../errors");
 const { authorizeRoles } = require("../security/Roles");
 const router = express.Router();
 
-router.get(
-  "/",
-  authorizeAndExtractToken,
-  authorizeRoles("admin", "user"),
-  async (req, res, next) => {
-    try {
-      const books = await Service.getAll();
-      res.json(books);
-    } catch (err) {
-      next(err);
-    }
+router.get("/", async (req, res, next) => {
+  try {
+    const books = await Service.getAll();
+    res.json(books);
+  } catch (err) {
+    next(err);
   }
-);
+});
 
 module.exports = router;
