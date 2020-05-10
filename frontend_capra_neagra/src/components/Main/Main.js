@@ -3,7 +3,9 @@ import Acasa from "./Acasa/Acasa";
 import Cont from "./Cont/Cont";
 import Produse from "./Produse/Produse";
 import Cumparaturi from "./Cumparaturi/Cumparaturi";
+import Contact from "./Contact";
 import styles from "./Main.module.scss";
+
 import { withRouter, Switch, Route } from "react-router-dom";
 
 class Main extends React.Component {
@@ -15,6 +17,7 @@ class Main extends React.Component {
           <Route path={"/cont"} component={Cont} />
           <Route path={"/produse"} component={Produse} />
           <Route exact path={"/cumparaturi"} component={Cumparaturi} />
+          <Route exact path={"/contact"} component={Contact} />
         </Switch>
       </div>
     );

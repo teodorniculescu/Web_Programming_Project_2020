@@ -9,5 +9,6 @@ function addController(folder_name, url) {
 addController("Users", "users");
 addController("Products", "products");
 addController("Specs", "specs");
+addController("Contact", "contact");
 
 module.exports = Router;

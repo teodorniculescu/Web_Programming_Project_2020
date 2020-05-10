@@ -1,0 +1,21 @@
+@import "_fonts.scss";
+.container {
+  text-align: center;
+  @include montserrat(400);
+  font-size: 13px;
+  margin: 7mm;
+  form {
+    display: flex;
+    justify-content: center;
+    margin: 5mm;
+    textarea {
+      border-radius: 1mm;
+    }
+    input {
+      display: flex;
+      justify-content: center;
+      margin: 5mm;
+      width: 25vh;
+    }
+  }
+}

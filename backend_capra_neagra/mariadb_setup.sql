@@ -1,4 +1,4 @@
-DROP TABLES IF EXISTS Specs, Products, Users;
+DROP TABLES IF EXISTS Specs, Products, Users, Contact;
 
 CREATE TABLE IF NOT EXISTS Users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
@@ -28,6 +28,18 @@ CREATE TABLE IF NOT EXISTS Specs (
     description VARCHAR(100) NOT NULL, 
     CONSTRAINT fk_Specs_Products FOREIGN KEY (id_products) REFERENCES Products (id)
     );
+
+CREATE TABLE IF NOT EXISTS Contact (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
+    message VARCHAR(1000) NOT NULL, 
+    answer VARCHAR(1000) NOT NULL, 
+    valid BOOL NOT NULL
+    );
+
+INSERT INTO Contact (message, answer, valid) VALUES
+    ('Cum pot cauta un anumit produs in magazin?', 'Pentru a cauta un produs, va rugam sa folositi modulul de cautare existent in partea de sus a site-ului. Introduceti informatiile cautate, iar daca acestea se regasesc pe site, vi se va afisa o lista a rezultatelor compatibile.', '0'),
+    ('Doresc sa achizitionez un produs care nu este pe stoc. Cum procedez?', 'Pentru mai multe informatii despre disponibilitatea produsului, va rugam sa ne contactati folosind formularul de contact de pe site.', '1'),
+    ('Doresc sa obtin informatii suplimentare, care nu se regasesc pe site. Cum procedez?', '', '0');
 
 INSERT INTO Users (username, password, name, email, valid, role, random) VALUES 
     ('admin', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'Admin', 'admin@temapw.ro', '1', 'admin', '0'),
