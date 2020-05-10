@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import styles from "./Styles.module.scss";
 import Box from "../../Box/Box";
+import trash from "./delete.svg";
+import suport from "./customer-support.svg";
 
 class TotiUtilizatorii extends Component {
   state = {};
@@ -32,13 +34,35 @@ class TotiUtilizatorii extends Component {
   componentDidMount() {
     this.getAuthorsLists();
   }
+  toggleSuport(id) {}
+  deleteAuthor(id) {}
   getDeleteIcon(id, role) {
     if (role === "admin") return null;
-    return null;
+    return (
+      <i>
+        <img
+          src={trash}
+          alt=""
+          onClick={() => {
+            this.deleteAuthor(id);
+          }}
+        />
+      </i>
+    );
   }
   getSuportIcon(id, role) {
     if (role === "admin") return null;
-    return null;
+    return (
+      <i>
+        <img
+          src={suport}
+          alt=""
+          onClick={() => {
+            this.toggleSuport(id);
+          }}
+        />
+      </i>
+    );
   }
   getTableRow() {
     return this.state.data.map((student, index) => {

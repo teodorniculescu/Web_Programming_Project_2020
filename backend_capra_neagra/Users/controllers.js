@@ -6,6 +6,43 @@ const { authorizeAndExtractToken } = require("../security/Jwt");
 const { ServerError } = require("../errors");
 const { authorizeRoles } = require("../security/Roles");
 
+router.put(
+  "/togglesuport/:id",
+  authorizeAndExtractToken,
+  authorizeRoles("admin"),
+  async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const fieldsToBeValidated = {
+        id: {
+          value: id,
+          type: "ascii",
+        },
+      };
+      validateFields(fieldsToBeValidated);
+      await Service.toggleSuport(id);
+      res.status(204).end();
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.get(
+  "/dataperm/:id",
+  authorizeAndExtractToken,
+  authorizeRoles("admin", "user", "suport"),
+  async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const data = await Service.getDataPerm(id);
+      res.json(data);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 router.post("/register/request", async (req, res, next) => {
   const { username, password, name, email } = req.body;
   try {

@@ -1,0 +1,17 @@
+.myTable {
+  text-align: center;
+  img {
+    width: auto;
+    height: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    tr:nth-child(even) {
+      background: #ccc;
+    }
+    tr:nth-child(odd) {
+      background: #fff;
+    }
+  }
+}

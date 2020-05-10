@@ -79,10 +79,25 @@ const getDataPerm = async (username_or_email) => {
   return query_res;
 };
 
+const toggleSuport = async (id) => {
+  const values = getValues({ id });
+  const cmd = `SELECT * FROM Users WHERE id=${values};`;
+  const query_res = await query(cmd);
+  const current_role = query_res[0].role;
+  if (current_role === "admin")
+    throw new ServerError(`Nu pot schimba rolul admin-ului`, 404);
+  let new_role = "user";
+  if (current_role === "user") new_role = "suport";
+  const role_values = getValues({ new_role });
+  const update_cmd = `UPDATE Users SET role=${role_values} WHERE id=${values};`;
+  await query(update_cmd);
+};
+
 module.exports = {
   register_request,
   register_confirm,
   getDataPerm,
+  toggleSuport,
   getAll,
   login,
 };
