@@ -1,0 +1,78 @@
+@import "_fonts.scss";
+$up: 1mm;
+.gdpr {
+  text-align: center;
+  @include montserrat(400);
+  font-size: 13px;
+  .about {
+    z-index: 2;
+    color: white;
+    position: absolute;
+    background-color: #333;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20%;
+    border: 2px solid #333;
+    padding: $up $up $up $up;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .manage {
+    z-index: 3;
+
+    visibility: hidden;
+  }
+  .dark_bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow-x: hidden;
+  }
+}
+
+.about_buttons {
+  display: flex;
+  flex-direction: column;
+  @include montserrat(600);
+  $the_yes_color: rgb(72, 190, 68);
+  $the_hover_yes_color: rgb(54, 141, 51);
+  .yes_button {
+    font-size: 20px;
+    background-color: $the_yes_color;
+    border-radius: 8px;
+    border: none;
+    border-width: 1px;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    &:hover {
+      background-color: $the_hover_yes_color;
+    }
+  }
+  .manage_button {
+    font-size: 15px;
+    background-color: #333;
+    border-color: white;
+    border-radius: 8px;
+    border: solid;
+    border-width: 1px;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    &:hover {
+      background-color: white;
+      color: #333;
+    }
+  }
+}
