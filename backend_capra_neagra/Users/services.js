@@ -67,7 +67,7 @@ const login = async (username, password) => {
 
 const getAll = async () => {
   const cmd = `SELECT * FROM Users;`;
-  const query_res = (await query(cmd))[0];
+  const query_res = await query(cmd);
   return query_res;
 };
 

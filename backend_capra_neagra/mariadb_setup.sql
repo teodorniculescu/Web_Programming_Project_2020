@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS Users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE, 
     username VARCHAR(100) NOT NULL UNIQUE, 
     password VARCHAR(100) NOT NULL, 
+    name VARCHAR(100) NOT NULL, 
     email VARCHAR(100) NOT NULL,
     valid BOOL NOT NULL,
     role ENUM('admin', 'suport', 'user') NOT NULL,
@@ -28,8 +29,11 @@ CREATE TABLE IF NOT EXISTS Specs (
     CONSTRAINT fk_Specs_Products FOREIGN KEY (id_products) REFERENCES Products (id)
     );
 
-INSERT INTO Users (username, password, email, valid, role, random) VALUES 
-    ('admin', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'admin@temapw.ro', '1', 'admin', '0');
+INSERT INTO Users (username, password, name, email, valid, role, random) VALUES 
+    ('admin', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'Admin', 'admin@temapw.ro', '1', 'admin', '0'),
+    ('anamaria', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'Popescu Ana-Maria', 'anamaria@gmail.com', '1', 'user', '0'),
+    ('mihaicruceru', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'Cruceru Mihai-Viorel', 'crucerumihai@yahoo.com', '1', 'suport', '0'),
+    ('sebastianmihai', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'Sebastian Mihai', 'sebastianmihai@gmail.ro', '1', 'user', '0');
 
 INSERT INTO Products (name, picture, price, currency, quantity, category) VALUES 
     ('Venture 2921', 'Venture_2921.jpg', '1000.00', 'RON', '4', 'bicycles');

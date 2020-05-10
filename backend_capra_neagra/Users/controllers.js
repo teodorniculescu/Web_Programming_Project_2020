@@ -69,8 +69,8 @@ router.get(
   authorizeRoles("admin"),
   async (req, res, next) => {
     try {
-      const books = await Service.getAll();
-      res.json(books);
+      const data = await Service.getAll();
+      res.json(data);
     } catch (err) {
       next(err);
     }
