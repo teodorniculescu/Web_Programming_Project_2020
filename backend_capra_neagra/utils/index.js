@@ -40,6 +40,14 @@ const validateFields = (fields) => {
           );
         }
         break;
+      case "unsigned int":
+        if (!(validator.isInt(fieldValue) && parseInt(fieldValue) >= 0)) {
+          throw new ServerError(
+            `Campul ${fieldName} trebuie sa fie un numar intreg pozitiv`,
+            400
+          );
+        }
+        break;
     }
   }
 };

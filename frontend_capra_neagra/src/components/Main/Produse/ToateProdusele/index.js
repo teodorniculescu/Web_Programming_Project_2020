@@ -26,7 +26,6 @@ class ToateProdusele extends Component {
 
   getProductBox(data) {
     const path_src = require(`./pictures/${data.picture}`);
-    console.log(path_src);
     const price = parseFloat(data.price).toString();
     const link = `/produse/${data.id}`;
     return (

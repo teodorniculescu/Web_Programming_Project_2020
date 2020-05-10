@@ -15,4 +15,21 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const fieldsToBeValidated = {
+      id: {
+        value: id,
+        type: "unsigned int",
+      },
+    };
+    validateFields(fieldsToBeValidated);
+    const books = await Service.getById(id);
+    res.json(books);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
