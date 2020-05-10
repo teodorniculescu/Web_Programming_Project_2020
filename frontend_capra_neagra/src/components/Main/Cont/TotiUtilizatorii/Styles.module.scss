@@ -1,4 +1,6 @@
+@import "_fonts.scss";
 .myTable {
+  @include montserrat(400);
   text-align: center;
   img {
     width: auto;

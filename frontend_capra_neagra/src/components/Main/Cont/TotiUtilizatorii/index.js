@@ -16,7 +16,6 @@ class TotiUtilizatorii extends Component {
 
     const address = "http://localhost:3001/api/v1/users/";
     const token = localStorage.getItem("token");
-    console.log(token);
     axios
       .get(address, {
         headers: {
@@ -25,7 +24,6 @@ class TotiUtilizatorii extends Component {
       })
       .then((res) => {
         this.setState({ data: res.data });
-        console.log(this.state.data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,8 +32,42 @@ class TotiUtilizatorii extends Component {
   componentDidMount() {
     this.getAuthorsLists();
   }
-  toggleSuport(id) {}
-  deleteAuthor(id) {}
+  toggleSuport(id) {
+    const address = `http://localhost:3001/api/v1/users/togglesuport/${id}`;
+    const token = localStorage.getItem("token");
+    axios
+      .put(
+        address,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        this.componentDidMount();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  deleteAuthor(id) {
+    const address = `http://localhost:3001/api/v1/users/${id}`;
+    const token = localStorage.getItem("token");
+    axios
+      .delete(address, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        this.componentDidMount();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   getDeleteIcon(id, role) {
     if (role === "admin") return null;
     return (
@@ -82,28 +114,30 @@ class TotiUtilizatorii extends Component {
       //<th>{this.getIcon(_id)}</th>
     });
   }
-  formatData = () => {
+  getTable() {
+    if (localStorage.getItem("role") !== "admin") return null;
     return (
-      <Box>
-        <div className={styles.myTable}>
-          <table>
-            <tbody>
-              <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Valid</th>
-                <th>Role</th>
-                <th>Delete</th>
-                <th>Grant/Revoke Suport</th>
-              </tr>
-              {this.getTableRow()}
-            </tbody>
-          </table>
-        </div>
-      </Box>
+      <div className={styles.myTable}>
+        <table>
+          <tbody>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Valid</th>
+              <th>Role</th>
+              <th>Delete</th>
+              <th>Grant/Revoke Suport</th>
+            </tr>
+            {this.getTableRow()}
+          </tbody>
+        </table>
+      </div>
     );
+  }
+  formatData = () => {
+    return <Box>{this.getTable()}</Box>;
   };
 
   render() {

@@ -18,6 +18,7 @@ class GDPR extends Component {
       this.getStringBool(this.state.performance)
     );
     localStorage.setItem("Publicity", this.getStringBool(this.state.publicity));
+    localStorage.setItem("GDPR", "true");
   }
   hideAll = () => {
     document.getElementById("gdpr_dark_bg").style.visibility = "hidden";
@@ -176,9 +177,11 @@ class GDPR extends Component {
     document.body.style.overflowY = "visible";
   }
   componentDidMount() {
-    this.disableScroll();
+    if (localStorage.getItem("GDPR") !== "true") this.disableScroll();
   }
-  render() {
+
+  getGDPR() {
+    if (localStorage.getItem("GDPR") === "true") return null;
     return (
       <div className={styles.gdpr}>
         <div id="gdpr_dark_bg" className={styles.dark_bg}></div>
@@ -190,6 +193,10 @@ class GDPR extends Component {
         </div>
       </div>
     );
+  }
+
+  render() {
+    return <div>{this.getGDPR()}</div>;
   }
 }
 
