@@ -2,6 +2,9 @@ const express = require("express");
 const Service = require("./services.js");
 const { validateFields } = require("../utils");
 const router = express.Router();
+const { authorizeAndExtractToken } = require("../security/Jwt");
+const { ServerError } = require("../errors");
+const { authorizeRoles } = require("../security/Roles");
 
 router.post("/register/request", async (req, res, next) => {
   const { username, password, email } = req.body;
@@ -59,5 +62,19 @@ router.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
+router.get(
+  "/",
+  authorizeAndExtractToken,
+  authorizeRoles("admin"),
+  async (req, res, next) => {
+    try {
+      const books = await Service.getAll();
+      res.json(books);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 module.exports = router;

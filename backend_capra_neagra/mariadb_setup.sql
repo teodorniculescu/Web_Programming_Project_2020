@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Specs (
     );
 
 INSERT INTO Users (username, password, email, valid, role, random) VALUES 
-    ('admin', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'teodorniculescu@yahoo.com', '1', 'admin', '0');
+    ('admin', '$2a$05$zHPMpKlI1CFcpNEdKaWA4uFjystGdvcy9AsJFXs/3Kl4CEjDcQi/K', 'admin@temapw.ro', '1', 'admin', '0');
 
 INSERT INTO Products (name, picture, price, currency, quantity, category) VALUES 
     ('Venture 2921', 'Venture_2921.jpg', '1000.00', 'RON', '4', 'bicycles');

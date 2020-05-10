@@ -65,8 +65,15 @@ const login = async (username, password) => {
   throw new ServerError("Combinatia de username si parola nu este buna!", 404);
 };
 
+const getAll = async () => {
+  const cmd = `SELECT * FROM Users;`;
+  const query_res = (await query(cmd))[0];
+  return query_res;
+};
+
 module.exports = {
   register_request,
   register_confirm,
+  getAll,
   login,
 };
