@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import ToateProdusele from "../ToateProdusele";
 import axios from "axios";
-import { Link, withRouter } from "react-router-dom";
 import Box from "../../Box/Box";
 import styles from "./Styles.module.scss";
+import { Link } from "react-router-dom";
 
-class ToateProdusele extends Component {
+class ProdusID extends Component {
+  state = {};
+  render() {
+    return <ToateProdusele id={this.props.match.params.id} />;
+  }
   state = { data: undefined };
 
   getProducts = (category) => {
@@ -24,7 +29,9 @@ class ToateProdusele extends Component {
     this.getProducts(this.props.category);
   }
 
-  getProductBox(data) {
+  render() {
+    if (this.state.data === undefined) return null;
+    const data = this.state.data[0];
     const path_src = require(`../pictures/${data.picture}`);
     const price = parseFloat(data.price).toString();
     const link = `/produse/${data.id}`;
@@ -45,22 +52,11 @@ class ToateProdusele extends Component {
               <div className={styles.more}>> Detalii</div>
             </Link>
           </div>
+          <div className={styles.specs}></div>
         </div>
       </Box>
     );
   }
-
-  getProductsData() {
-    if (this.state.data === undefined) return null;
-    return this.state.data.map((data_element, index) => {
-      const asdf = this.getProductBox(data_element);
-      return asdf;
-    });
-  }
-
-  render() {
-    return <div>{this.getProductsData()}</div>;
-  }
 }
 
-export default withRouter(ToateProdusele);
+export default ProdusID;
