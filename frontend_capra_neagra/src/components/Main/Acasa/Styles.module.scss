@@ -1,0 +1,57 @@
+@import "_fonts.scss";
+$cp: 210;
+$wcpimg: 100%;
+.post {
+  @include montserrat(600);
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  hr {
+    width: $wcpimg;
+    height: 1px;
+    border: none;
+    background-color: rgb($cp, $cp, $cp);
+  }
+  hr,
+  .lower,
+  .img_container,
+  .upper {
+    display: flex;
+    flex-direction: row;
+    margin-right: 5mm;
+  }
+  .lower {
+    @include montserrat(400);
+    font-size: 13px;
+  }
+  .lower,
+  hr,
+  .upper {
+    margin: 2mm;
+  }
+  .upper {
+    justify-content: space-between;
+    .title {
+    }
+    .quantity {
+    }
+  }
+  .img_container {
+    justify-content: center;
+  }
+  .lower {
+    justify-content: space-around;
+    .price {
+    }
+    .more {
+    }
+  }
+  img {
+    width: $wcpimg;
+    height: auto;
+  }
+}
