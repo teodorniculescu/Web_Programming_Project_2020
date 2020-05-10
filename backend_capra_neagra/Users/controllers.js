@@ -7,7 +7,7 @@ const { ServerError } = require("../errors");
 const { authorizeRoles } = require("../security/Roles");
 
 router.post("/register/request", async (req, res, next) => {
-  const { username, password, email } = req.body;
+  const { username, password, name, email } = req.body;
   try {
     const fieldsToBeValidated = {
       username: {
@@ -18,13 +18,17 @@ router.post("/register/request", async (req, res, next) => {
         value: password,
         type: "ascii",
       },
+      name: {
+        value: password,
+        type: "ascii",
+      },
       email: {
         value: email,
         type: "email",
       },
     };
     validateFields(fieldsToBeValidated);
-    await Service.register_request(username, password, email);
+    await Service.register_request(username, password, name, email);
     res.status(201).end();
   } catch (err) {
     next(err);

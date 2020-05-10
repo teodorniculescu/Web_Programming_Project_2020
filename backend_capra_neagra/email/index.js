@@ -9,7 +9,7 @@ async function send(to, id, rnd) {
     },
   });
 
-  const link_auth = `http://localhost:3000/#/cont/confirmare?id=${id}&rnd=${rnd}`;
+  const link_auth = `http://localhost:3000/cont/confirmare?id=${id}&rnd=${rnd}`;
 
   const html_message = `Bine ati venit la Capra Neagra!<br>Va rugam sa apasati <a href=\"${link_auth}\">aici</a> pentru activatea contului de membru!`;
 

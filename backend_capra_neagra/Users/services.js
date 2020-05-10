@@ -18,7 +18,7 @@ function generate_random_number(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const register_request = async (username, password, email) => {
+const register_request = async (username, password, name, email) => {
   const hashedPassword = await hash(password);
   console.log(hashedPassword);
   const role = username === "admin" ? "admin" : "user";
@@ -26,6 +26,7 @@ const register_request = async (username, password, email) => {
   const data = {
     username: username,
     password: hashedPassword,
+    name: name,
     role: role,
     email: email,
     valid: FALSE,
