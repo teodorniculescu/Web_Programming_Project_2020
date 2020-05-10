@@ -3,6 +3,14 @@ $bac_width: 80%;
 div {
   border-radius: 5px;
   form {
+    justify-content: center;
+    div {
+      justify-content: center;
+    }
+    a {
+      text-align: center;
+      color: black;
+    }
     display: flex;
     flex-direction: column;
     label {

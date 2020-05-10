@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Box from "../../Box/Box";
 import "./Intrare.module.scss";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Intrare extends Component {
   constructor(props) {
@@ -41,33 +41,33 @@ class Intrare extends Component {
         console.log(error);
       });
   }
-  getForm() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              type="text"
-              placeholder="Username"
-              onChange={this.handleChangeUsername}
-            ></input>
-          </label>
-          <label>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={this.handleChangePassword}
-            ></input>
-          </label>
-          <label>
-            <input type="submit" value="Log in"></input>
-          </label>
-        </form>
-      </div>
-    );
-  }
   render() {
-    return <Box>{this.getForm()}</Box>;
+    return (
+      <Box>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              <input
+                type="text"
+                placeholder="Username"
+                onChange={this.handleChangeUsername}
+              ></input>
+            </label>
+            <label>
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={this.handleChangePassword}
+              ></input>
+            </label>
+            <label>
+              <input type="submit" value="Log in"></input>
+            </label>
+            <Link to="/cont/inregistrare">Creaza un cont nou!</Link>
+          </form>
+        </div>
+      </Box>
+    );
   }
 }
 
