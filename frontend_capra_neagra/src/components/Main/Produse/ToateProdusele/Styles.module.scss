@@ -21,6 +21,10 @@ $wcpimg: 100%;
   .upper {
     display: flex;
     flex-direction: row;
+    margin: 3mm;
+  }
+  .img_container {
+    margin-right: 8mm;
   }
   .upper {
     justify-content: space-between;

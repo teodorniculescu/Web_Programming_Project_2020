@@ -58,10 +58,7 @@ class SideNav extends React.Component {
           {this.getSocialButton()}
           <div className={styles.side_navigation_list}>
             <hr />
-            {this.getSideLink("/produse", "TOATE PRODUSELE")}
-            {this.getSideLink("/produse/biciclete", "BICICLETE")}
-            {this.getSideLink("/produse/accesorii", "ACCESORII")}
-            {this.getSideLink("/produse/textile", "TEXTILE")}
+            {this.getSideLink("/produse", "PRODUSE")}
             <hr />
             {this.getSideLink("/faq", "FAQ")}
             {this.getSideLink("/contact", "CONTACT")}

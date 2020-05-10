@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Box from "../../Box/Box";
 import { withRouter } from "react-router-dom";
+import styles from "./Styles.module.scss";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -23,11 +24,15 @@ class Dashboard extends Component {
   render() {
     return (
       <Box>
-        <div>
-          Bine ai venit, <i>{localStorage.getItem("name")}</i>!
-          <button type="button" onClick={this.handleSubmit}>
-            Log out
-          </button>
+        <div className={styles.ceva}>
+          <div className={styles.altceva}>
+            Bine ai venit, <i>{localStorage.getItem("name")}</i>!<br></br>
+          </div>
+          <div className={styles.altceva}>
+            <button type="button" onClick={this.handleSubmit}>
+              Log out
+            </button>
+          </div>
         </div>
       </Box>
     );
