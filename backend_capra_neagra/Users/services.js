@@ -44,13 +44,13 @@ const register_confirm = async (id, random) => {
   return result.affectedRows;
 };
 
-const login = async (username, password) => {
-  const values = getValues({ username });
-  const cmd = `SELECT * FROM Users WHERE username=${values};`;
+const login = async (username_or_email, password) => {
+  const values = getValues({ username_or_email });
+  const cmd = `SELECT * FROM Users WHERE username=${values} or email=${values};`;
   const query_res = (await query(cmd))[0];
   if (query_res === undefined) {
     throw new ServerError(
-      `Utilizatorul inregistrat cu username-ul: ${username} nu exista!`,
+      `Utilizatorul inregistrat cu username-ul sau parola: ${username_or_email} nu exista!`,
       404
     );
   }

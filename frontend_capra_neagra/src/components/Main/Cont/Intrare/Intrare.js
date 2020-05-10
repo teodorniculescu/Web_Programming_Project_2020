@@ -32,7 +32,7 @@ class Intrare extends Component {
       .then((res) => {
         this.setState({ output: "User sucessfully authenticated!" });
         localStorage.setItem("token", res.data);
-        localStorage.setItem("username", this.state.Username);
+        localStorage.setItem("username", this.state.Username.split("@")[0]);
         localStorage.setItem("logged_in", "true");
         this.props.history.push("/");
       })

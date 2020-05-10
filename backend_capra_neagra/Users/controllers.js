@@ -52,7 +52,7 @@ router.post("/login", async (req, res, next) => {
     const fieldsToBeValidated = {
       username: {
         value: username,
-        type: "alpha",
+        type: "ascii",
       },
       password: {
         value: password,
