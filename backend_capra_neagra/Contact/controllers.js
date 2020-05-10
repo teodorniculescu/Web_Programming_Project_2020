@@ -16,16 +16,21 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { message } = req.body;
+  const { message, from_id } = req.body;
   try {
+    console.log(from_id);
     const fieldsToBeValidated = {
       message: {
         value: message,
         type: "ascii",
       },
+      from_id: {
+        value: from_id,
+        type: "int",
+      },
     };
     validateFields(fieldsToBeValidated);
-    await Service.postQuestion(message);
+    await Service.postQuestion(message, from_id);
     res.status(201).end();
   } catch (err) {
     next(err);

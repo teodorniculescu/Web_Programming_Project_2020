@@ -13,6 +13,7 @@ class Dashboard extends Component {
     this.props.history.push("/");
   }
   clearUserDataAndPerm() {
+    localStorage.removeItem("id");
     localStorage.removeItem("name");
     localStorage.removeItem("role");
     localStorage.removeItem("logged_in");

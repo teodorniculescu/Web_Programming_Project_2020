@@ -59,6 +59,7 @@ class Intrare extends Component {
       });
   }
   setUserDataAndPerm(data) {
+    localStorage.setItem("id", data.id);
     localStorage.setItem("name", data.name);
     localStorage.setItem("role", data.role);
     localStorage.setItem("logged_in", "true");

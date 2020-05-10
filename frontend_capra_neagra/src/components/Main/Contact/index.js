@@ -19,6 +19,7 @@ class Contact extends Component {
     event.preventDefault();
     const payload = {
       message: this.state.message,
+      from_id: localStorage.getItem("id"),
     };
     console.log(payload);
     const address = "http://localhost:3001/api/v1/contact";
