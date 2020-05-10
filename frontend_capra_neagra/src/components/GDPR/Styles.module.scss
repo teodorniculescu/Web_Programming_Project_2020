@@ -1,35 +1,48 @@
 @import "_fonts.scss";
 $up: 1mm;
+
+.dark_bg {
+  display: block;
+  visibility: visible;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+$width_popup: 80vw;
+
 .gdpr {
   text-align: center;
   @include montserrat(400);
   font-size: 13px;
+  display: flex;
+  justify-content: center;
+
   .about {
     z-index: 2;
     color: white;
     position: absolute;
     background-color: #333;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 20%;
+    width: $width_popup;
+    margin-top: 1cm;
     border: 2px solid #333;
     padding: $up $up $up $up;
-    width: 80%; /* Could be more or less, depending on screen size */
   }
   .manage {
-    z-index: 3;
-
     visibility: hidden;
-  }
-  .dark_bg {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.25);
-    overflow-x: hidden;
+    text-align: left;
+    z-index: 3;
+    color: black;
+    position: absolute;
+    background-color: white;
+    width: $width_popup;
+    overflow: hidden;
+    margin-top: 1cm;
+    border: 2px solid white;
+    padding: $up $up $up $up;
   }
 }
 
@@ -75,4 +88,97 @@ $up: 1mm;
       color: #333;
     }
   }
+  .anulare_button {
+    border-color: $the_yes_color;
+    background-color: white;
+    color: $the_yes_color;
+    font-size: 15px;
+    border-radius: 8px;
+    border: solid;
+    border-width: 1px;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    &:hover {
+      background-color: $the_yes_color;
+      color: white;
+    }
+  }
+}
+
+.slider_area {
+  display: flex;
+  justify-content: space-between;
+  .left {
+    @include montserrat(600);
+    font-size: 18px;
+  }
+}
+.switch {
+  $hp: 28px;
+  $wp: calc(#{$hp} * 1.764);
+  $bilap: calc(#{$hp} * 0.764);
+  $lebop: calc((#{$hp} - #{$bilap}) / 2);
+
+  position: relative;
+  display: inline-block;
+  width: $wp;
+  height: $hp;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  input:checked + .slider {
+    background-color: #2196f3;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX($bilap);
+    -ms-transform: translateX($bilap);
+    transform: translateX($bilap);
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: $hp;
+    &:before {
+      border-radius: 50%;
+      position: absolute;
+      content: "";
+      height: $bilap;
+      width: $bilap;
+      left: $lebop;
+      bottom: $lebop;
+      background-color: white;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+  }
+}
+
+.slider_container {
+}
+
+.manage_title {
+  text-align: center;
+}
+
+.right {
+  color: #2196f3;
+  @include montserrat(600);
+  font-size: 18px;
 }
