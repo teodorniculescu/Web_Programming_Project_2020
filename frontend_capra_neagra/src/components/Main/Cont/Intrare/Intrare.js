@@ -30,16 +30,38 @@ class Intrare extends Component {
     axios
       .post(address, payload)
       .then((res) => {
-        this.setState({ output: "User sucessfully authenticated!" });
         localStorage.setItem("token", res.data);
-        localStorage.setItem("username", this.state.Username.split("@")[0]);
-        localStorage.setItem("logged_in", "true");
+        this.getUserDataAndPerm();
+      })
+      .catch((error) => {
+        this.setState({ output: "error" });
+        console.log(error);
+      });
+  }
+
+  getUserDataAndPerm() {
+    const token = localStorage.getItem("token");
+    const address = `http://localhost:3001/api/v1/users/dataperm/${this.state.Username}`;
+    axios
+      .get(address, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        this.setState({ output: "User sucessfully authenticated!" });
+        this.setUserDataAndPerm(res.data[0]);
         this.props.history.push("/");
       })
       .catch((error) => {
         this.setState({ output: "error" });
         console.log(error);
       });
+  }
+  setUserDataAndPerm(data) {
+    localStorage.setItem("name", data.name);
+    localStorage.setItem("role", data.role);
+    localStorage.setItem("logged_in", "true");
   }
   render() {
     return (

@@ -9,16 +9,21 @@ class Dashboard extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.clearUserDataAndPerm();
+    this.props.history.push("/");
+  }
+  clearUserDataAndPerm() {
+    localStorage.removeItem("name");
+    localStorage.removeItem("role");
     localStorage.removeItem("logged_in");
     localStorage.removeItem("token");
-    this.props.history.push("/");
   }
   state = {};
   render() {
     return (
       <Box>
         <div>
-          Bine ai venit, <i>{localStorage.getItem("username")}</i>!
+          Bine ai venit, <i>{localStorage.getItem("name")}</i>!
           <button type="button" onClick={this.handleSubmit}>
             Log out
           </button>

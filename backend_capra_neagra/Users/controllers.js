@@ -68,6 +68,21 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get(
+  "/dataperm/:id",
+  authorizeAndExtractToken,
+  authorizeRoles("admin", "user", "suport"),
+  async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const data = await Service.getDataPerm(id);
+      res.json(data);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.get(
   "/",
   authorizeAndExtractToken,
   authorizeRoles("admin"),

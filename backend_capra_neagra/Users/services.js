@@ -72,9 +72,17 @@ const getAll = async () => {
   return query_res;
 };
 
+const getDataPerm = async (username_or_email) => {
+  const values = getValues({ username_or_email });
+  const cmd = `SELECT * FROM Users WHERE username=${values} or email=${values};`;
+  const query_res = await query(cmd);
+  return query_res;
+};
+
 module.exports = {
   register_request,
   register_confirm,
+  getDataPerm,
   getAll,
   login,
 };
