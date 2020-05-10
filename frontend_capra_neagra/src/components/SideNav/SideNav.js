@@ -65,7 +65,6 @@ class SideNav extends React.Component {
             <hr />
             {this.getSideLink("/faq", "FAQ")}
             {this.getSideLink("/contact", "CONTACT")}
-            {this.getSideLink("/suport", "SUPORT TEHNIC")}
             <hr />
             {this.getSideLink("/cont/intrare", "CONTUL MEU")}
           </div>

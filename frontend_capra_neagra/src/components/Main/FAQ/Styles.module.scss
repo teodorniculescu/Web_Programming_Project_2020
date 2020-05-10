@@ -1,0 +1,52 @@
+@import "_fonts.scss";
+.qanda {
+  @include montserrat(500);
+  font-size: 15px;
+  margin: 2mm;
+  display: flex;
+  flex-direction: column;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    .utils {
+      display: flex;
+      justify-content: space-between;
+      img {
+      }
+    }
+  }
+}
+
+img {
+  width: auto;
+  height: 8mm;
+  margin-left: 5mm;
+}
+
+.show_answer {
+  color: black;
+}
+.hidden_answer {
+  color: grey;
+}
+
+.container {
+  text-align: center;
+  @include montserrat(400);
+  font-size: 13px;
+  margin: 7mm;
+  form {
+    display: flex;
+    justify-content: center;
+    margin: 5mm;
+    textarea {
+      border-radius: 1mm;
+    }
+    input {
+      display: flex;
+      justify-content: center;
+      margin: 5mm;
+      width: 25vh;
+    }
+  }
+}

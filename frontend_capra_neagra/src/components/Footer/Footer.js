@@ -18,10 +18,8 @@ class Footer extends React.Component {
           <div className={(styles.col_xs_6, styles.col_md_3)}>
             <h6>Informatii</h6>
             <ul className={styles.footer_links}>
-              {this.getLink("/ana3", "Suport tehnic")}
-              {this.getLink("/ana2", "Contactează-ne")}
-              {this.getLink("/ana4", "Termeni și condiții")}
-              {this.getLink("/ana1", "Întrebări frecvente")}
+              {this.getLink("/contact", "Contactează-ne")}
+              {this.getLink("/faq", "Întrebări frecvente")}
             </ul>
           </div>
           <hr></hr>
