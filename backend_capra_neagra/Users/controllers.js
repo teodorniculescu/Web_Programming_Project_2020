@@ -27,6 +27,26 @@ router.put(
     }
   }
 );
+router.delete(
+  "/:id",
+  authorizeAndExtractToken,
+  authorizeRoles("admin"),
+  async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      validateFields({
+        id: {
+          value: id,
+          type: "ascii",
+        },
+      });
+      await Service.deleteById(id);
+      res.status(204).end();
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 router.get(
   "/dataperm/:id",

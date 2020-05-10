@@ -93,11 +93,18 @@ const toggleSuport = async (id) => {
   await query(update_cmd);
 };
 
+const deleteById = async (id) => {
+  const values = getValues({ id });
+  const cmd = `DELETE FROM Users WHERE id=${values}`;
+  await query(cmd);
+};
+
 module.exports = {
   register_request,
   register_confirm,
   getDataPerm,
   toggleSuport,
+  deleteById,
   getAll,
   login,
 };
