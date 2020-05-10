@@ -1,20 +1,28 @@
 import React, { Component } from "react";
-import ToateProdusele from "../ToateProdusele";
 import axios from "axios";
 import Box from "../../Box/Box";
 import styles from "./Styles.module.scss";
 import { Link } from "react-router-dom";
 
 class ProdusID extends Component {
-  state = {};
-  render() {
-    return <ToateProdusele id={this.props.match.params.id} />;
-  }
   state = { data: undefined };
 
-  getProducts = (category) => {
-    let address = "http://localhost:3001/api/v1/products";
-    if (category !== undefined && category !== "") address += `/${category}`;
+  getSpecs = () => {
+    const id = this.props.match.params.id;
+    let address = `http://localhost:3001/api/v1/specs/products/${id}`;
+    axios
+      .get(address)
+      .then((res) => {
+        this.setState({ specs: res.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getProducts = () => {
+    const id = this.props.match.params.id;
+    let address = `http://localhost:3001/api/v1/products/${id}`;
     axios
       .get(address)
       .then((res) => {
@@ -26,7 +34,21 @@ class ProdusID extends Component {
   };
 
   componentDidMount() {
-    this.getProducts(this.props.category);
+    this.getProducts();
+    this.getSpecs();
+  }
+
+  getTablerRows() {
+    if (this.state.specs === undefined) return null;
+    return this.state.specs.map((student, index) => {
+      const { _id, idp, title, description } = student;
+      return (
+        <tr key={_id}>
+          <td>{title}</td>
+          <td>{description}</td>
+        </tr>
+      );
+    });
   }
 
   render() {
@@ -52,7 +74,12 @@ class ProdusID extends Component {
               <div className={styles.more}>> Detalii</div>
             </Link>
           </div>
-          <div className={styles.specs}></div>
+          <hr></hr>
+          <div className={styles.specs}>
+            <table>
+              <tbody>{this.getTablerRows()}</tbody>
+            </table>
+          </div>
         </div>
       </Box>
     );

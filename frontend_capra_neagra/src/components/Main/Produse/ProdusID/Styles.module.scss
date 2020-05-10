@@ -44,3 +44,19 @@ $wcpimg: 100%;
     height: auto;
   }
 }
+.specs {
+  img {
+    width: auto;
+    height: 20px;
+  }
+  $c2: 220;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    tr:nth-child(even) {
+      background: rgb($c2, $c2, $c2);
+    }
+    tr:nth-child(odd) {
+    }
+  }
+}
