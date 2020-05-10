@@ -4,12 +4,14 @@ import Confirmare from "./Confirmare/Confirmare.js";
 import Inregistrare from "./Inregistrare/Inregistrare";
 import Dashboard from "./Dashboard";
 import Intrare from "./Intrare/Intrare";
+import TotiUtilizatorii from "./TotiUtilizatorii";
 
 class Cont extends Component {
   state = {};
   render() {
     return (
       <Switch>
+        <Route path={"/cont/totiutilizatorii"} component={TotiUtilizatorii} />
         <Route path={"/cont/confirmare"} component={Confirmare} />
         <Route path={"/cont/inregistrare"} component={Inregistrare} />
         <Route path={"/cont/intrare"}>

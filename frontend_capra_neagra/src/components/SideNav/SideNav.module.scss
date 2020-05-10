@@ -15,7 +15,8 @@ $separator-line-width: calc(100% - 2cm);
   font-size: $size-element;
 }
 
-.closebutton {
+.closebutton,
+.socialbutton {
   cursor: pointer;
   height: $size-element;
   width: auto;
@@ -56,6 +57,11 @@ $separator-line-width: calc(100% - 2cm);
   position: absolute;
   top: $spacing;
   left: $spacing;
+}
+.socialbutton {
+  position: absolute;
+  top: $spacing;
+  left: calc(#{$spacing} * 4);
 }
 hr {
   border-top: 1px solid $separator-line-color;

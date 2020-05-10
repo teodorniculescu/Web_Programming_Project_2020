@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./SideNav.module.scss";
 import exit from "./exit.svg";
+import social from "./social.svg";
 import { Link, withRouter } from "react-router-dom";
 
 class SideNav extends React.Component {
@@ -8,6 +9,19 @@ class SideNav extends React.Component {
     console.log("close");
     document.getElementById("sidenavigation").style.width = "0%";
     document.getElementById("darken_background").style.width = "0%";
+  }
+  getSocialButton() {
+    return (
+      <Link to="/cont/totiutilizatorii">
+        <img
+          id="sidenav_socialbutton"
+          className={styles.socialbutton}
+          src={social}
+          alt="All Users"
+          onClick={this.closeMenu}
+        />
+      </Link>
+    );
   }
   getCloseButton() {
     return (
@@ -19,6 +33,7 @@ class SideNav extends React.Component {
       />
     );
   }
+
   getSideLink(link, content) {
     return (
       <Link to={link} onClick={this.closeMenu}>
@@ -26,11 +41,21 @@ class SideNav extends React.Component {
       </Link>
     );
   }
+  componentDidMount() {
+    let value;
+    if (localStorage.getItem("role") === "admin") value = "visible";
+    else value = "hidden";
+    document.getElementById("sidenav_socialbutton").style.visibility = value;
+  }
+  componentDidUpdate() {
+    this.componentDidMount();
+  }
   render() {
     return (
       <div>
         <div id="sidenavigation" className={styles.sidenavigation}>
           {this.getCloseButton()}
+          {this.getSocialButton()}
           <div className={styles.side_navigation_list}>
             <hr />
             {this.getSideLink("/produse", "TOATE PRODUSELE")}
